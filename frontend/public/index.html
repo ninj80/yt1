@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Cool YouTube Video Downloader - Download videos and playlists in multiple formats" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>YouTube Downloader - Download Videos & Playlists</title>
+    
+    <!-- Preload fonts for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    
+    <!-- Meta tags for SEO -->
+    <meta property="og:title" content="YouTube Downloader - Download Videos & Playlists" />
+    <meta property="og:description" content="Cool YouTube Video Downloader - Download videos and playlists in multiple formats including MP4, WebM, and MP3" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://your-domain.com" />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="YouTube Downloader - Download Videos & Playlists" />
+    <meta name="twitter:description" content="Cool YouTube Video Downloader - Download videos and playlists in multiple formats including MP4, WebM, and MP3" />
+    <meta name="twitter:image" content="%PUBLIC_URL%/og-image.png" />
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    
+    <!-- PWA tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="YouTube Downloader" />
+    
+    <!-- Loading animation styles -->
+    <style>
+      #initial-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(-45deg, #1e1b4b, #312e81, #1e3a8a, #1e40af);
+        background-size: 400% 400%;
+        animation: gradientShift 3s ease infinite;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+      
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      
+      .loader {
+        width: 48px;
+        height: 48px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top: 4px solid #fff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      .loader-text {
+        color: white;
+        font-family: 'Inter', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        margin-top: 20px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    
+    <!-- Initial loading screen -->
+    <div id="initial-loader">
+      <div>
+        <div class="loader"></div>
+        <div class="loader-text">Loading YouTube Downloader...</div>
+      </div>
+    </div>
+    
+    <!-- React app container -->
+    <div id="root"></div>
+    
+    <!-- Remove loader when React app starts -->
+    <script>
+      window.addEventListener('DOMContentLoaded', function() {
+        // Hide loader after a short delay to ensure smooth transition
+        setTimeout(function() {
+          const loader = document.getElementById('initial-loader');
+          if (loader) {
+            loader.style.opacity = '0';
+            loader.style.transition = 'opacity 0.5s ease-out';
+            setTimeout(function() {
+              loader.remove();
+            }, 500);
+          }
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>
